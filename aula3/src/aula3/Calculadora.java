@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -15,11 +16,8 @@ import java.awt.FlowLayout;
 public class Calculadora extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
+	private JTextField textFieldValor1;
+	private JTextField textFieldValor2;
 
 	/**
 	 * Launch the application.
@@ -49,50 +47,94 @@ public class Calculadora extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Valor 1");
-		lblNewLabel.setBounds(10, 10, 46, 14);
+		JLabel lblNewLabel = new JLabel("Valor1");
+		lblNewLabel.setBounds(10, 11, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 30, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		JLabel lblValor = new JLabel("Valor2");
+		lblValor.setBounds(10, 36, 46, 14);
+		contentPane.add(lblValor);
 		
-		JLabel lblNewLabel_1 = new JLabel("Valor 2");
-		lblNewLabel_1.setBounds(10, 60, 46, 14);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewLabel_1_2 = new JLabel("Resultado");
+		lblNewLabel_1_2.setBounds(10, 98, 78, 14);
+		contentPane.add(lblNewLabel_1_2);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 80, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldValor1 = new JTextField();
+		textFieldValor1.setBounds(75, 8, 86, 20);
+		contentPane.add(textFieldValor1);
+		textFieldValor1.setColumns(10);
+		
+		textFieldValor2 = new JTextField();
+		textFieldValor2.setBounds(75, 33, 86, 20);
+		contentPane.add(textFieldValor2);
+		textFieldValor2.setColumns(10);
+		
+		JLabel lblNewLabelResultado = new JLabel("0");
+		lblNewLabelResultado.setBounds(115, 98, 101, 14);
+		contentPane.add(lblNewLabelResultado);
 		
 		JButton btnNewButton = new JButton("+");
-		btnNewButton.setBounds(10, 120, 50, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					double v1 = Double.parseDouble(textFieldValor1.getText());
+					double v2 = Double.parseDouble(textFieldValor2.getText());
+					lblNewLabelResultado.setText((v1+v2)+"");
+				}
+				catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Erro ao somar: "+e2.getMessage());
+				}
 			}
 		});
+		btnNewButton.setBounds(10, 64, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		btnNewButton_1 = new JButton("-");
-		btnNewButton_1.setBounds(70, 120, 50, 23);
+		JButton btnNewButton_1 = new JButton("-");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					double v1 = Double.parseDouble(textFieldValor1.getText());
+					double v2 = Double.parseDouble(textFieldValor2.getText());
+					lblNewLabelResultado.setText((v1-v2)+"");
+				}
+				catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Erro ao subtrair: "+e2.getMessage());
+				}
+			}
+		});
+		btnNewButton_1.setBounds(114, 64, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
-		btnNewButton_2 = new JButton("/");
-		btnNewButton_2.setBounds(130, 120, 50, 23);
-		contentPane.add(btnNewButton_2);
+		JButton btnNewButton_1_1 = new JButton("/");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					double v1 = Double.parseDouble(textFieldValor1.getText());
+					double v2 = Double.parseDouble(textFieldValor2.getText());
+					lblNewLabelResultado.setText((v1/v2)+"");
+				}
+				catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Erro ao dividir: "+e2.getMessage());
+				}
+			}
+		});
+		btnNewButton_1_1.setBounds(213, 64, 89, 23);
+		contentPane.add(btnNewButton_1_1);
 		
-		btnNewButton_3 = new JButton("*");
-		btnNewButton_3.setBounds(190, 120, 50, 23);
-		contentPane.add(btnNewButton_3);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("0");
-		lblNewLabel_1_1.setBounds(10, 190, 63, 14);
-		contentPane.add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Resultado");
-		lblNewLabel_1_1_1.setBounds(10, 165, 63, 14);
-		contentPane.add(lblNewLabel_1_1_1);
+		JButton btnNewButton_1_1_1 = new JButton("*");
+		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					double v1 = Double.parseDouble(textFieldValor1.getText());
+					double v2 = Double.parseDouble(textFieldValor2.getText());
+					lblNewLabelResultado.setText((v1*v2)+"");
+				}
+				catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Erro ao multiplicar: "+e2.getMessage());
+				}
+			}
+		});
+		btnNewButton_1_1_1.setBounds(312, 64, 89, 23);
+		contentPane.add(btnNewButton_1_1_1);
 	}
 }
