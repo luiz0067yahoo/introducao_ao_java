@@ -1,4 +1,4 @@
-package com.mycompany.servidor;
+package com.inprolink.servercontacts;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
